@@ -36,5 +36,9 @@ module $MultiSpaceship$.Client {
             }
         }
 
+        getObjectPhaser(): this {
+            return this;
+        }
+
     }
 }

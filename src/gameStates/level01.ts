@@ -33,6 +33,15 @@
             this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
         }
 
+        collisionHandler (object1: any, object2: any) {
+            //object1.kill();
+            object2.kill();
+        }
+
+        update(){
+            this.game.physics.arcade.overlap(this.mySpaceship.bullets.getObjectPhaser(), this.invader, this.collisionHandler, null, this);
+        }
+
     }
 
 }

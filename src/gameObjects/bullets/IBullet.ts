@@ -7,5 +7,6 @@ module $MultiSpaceship$.Client {
         fireRate: number;
 
         fire(): void;
+        getObjectPhaser(): Phaser.Group;
     }
 }
