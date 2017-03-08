@@ -6,6 +6,7 @@
         music: Phaser.Sound;
         player: Player;
         mySpaceship: Spaceship;
+        invader: Spaceship02;
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -25,8 +26,9 @@
             this.mySpaceship = new Spaceship(this.game, this.world.centerX, this.world.centerY);
             this.mySpaceship.bullets = new LaserBullet(this.game, this.mySpaceship);
 
-            var invader = new Spaceship02(this.game, this.world.centerX, this.world.centerY);
-            invader.bullets = new BallBullet(this.game, this.mySpaceship);
+            this.invader = new Spaceship02(this.game, this.world.centerX, this.world.centerY);
+            this.invader.bullets = new BallBullet(this.game, this.mySpaceship);
+            //this.invader.inputKeys.disableKeys();
 
             this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
         }

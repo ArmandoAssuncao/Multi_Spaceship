@@ -4,16 +4,24 @@ module $MultiSpaceship$.Client {
 
         private _bullets: IBullet;
         speed: number;
-        cursors: any;
+
+        inputKeys: InputKeys;
 
         constructor (game: Phaser.Game, x: number, y: number) {
             super(game, x, y,'invader', 1);
             this.name = 'invader';
             this.speed = 200;
 
+            this.inputKeys = new InputKeys(this.game);
+            //this.defineKeys();
+
             this.create();
 
             this.game.add.existing(this);
+        }
+
+        get bullets(): IBullet {
+            return this._bullets;
         }
 
         set bullets(bullets: IBullet){
@@ -27,34 +35,35 @@ module $MultiSpaceship$.Client {
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
             this.body.collideWorldBounds = true;
-
-            this.cursors = {
-                up: this.game.input.keyboard.addKey(Phaser.Keyboard.UP),
-                right: this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
-                down:  this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
-                left: this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
-                fire: this.game.input.keyboard.addKey(Phaser.Keyboard.S)
-            }
         }
 
         update(){
             if (this.alive) {
                 this.body.velocity.setTo(0, 0);
-
-                if (this.cursors.up.isDown)
-                    this.body.velocity.y = -this.speed;
-                else if (this.cursors.down.isDown)
-                    this.body.velocity.y = this.speed;
-
-                if (this.cursors.left.isDown)
-                    this.body.velocity.x = -this.speed;
-                else if (this.cursors.right.isDown)
-                    this.body.velocity.x = this.speed;
-
-                if (this.cursors.fire.isDown){
-                    this._bullets.fire();
-                }
             }
+        }
+
+        private defineKeys(){
+            this.inputKeys.keyUp = this.moveToUp;
+            this.inputKeys.keyDown = this.moveToDown;
+            this.inputKeys.keyLeft = this.moveToLeft;
+            this.inputKeys.keyRight = this.moveToRight;
+            this.inputKeys.keyS = this.fire;
+        }
+        private moveToUp = () => {
+            this.body.velocity.y = -this.speed;
+        }
+        private moveToDown = () => {
+            this.body.velocity.y = this.speed;
+        }
+        private moveToLeft = () => {
+            this.body.velocity.x = -this.speed;
+        }
+        private moveToRight = () => {
+            this.body.velocity.x = this.speed;
+        }
+        private fire = () => {
+            this._bullets.fire();
         }
     }
 }
