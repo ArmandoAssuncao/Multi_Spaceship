@@ -28,6 +28,10 @@ module $MultiSpaceship$.Client {
             this._bullets = bullets;
         }
 
+        getObjectPhaser(): Phaser.Sprite {
+            return this;
+        }
+
 
         create(){
             this.anchor.setTo(0.5, 0.5);

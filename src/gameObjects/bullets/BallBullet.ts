@@ -38,7 +38,7 @@ module $MultiSpaceship$.Client {
             }
         }
 
-        getObjectPhaser(): this {
+        getObjectPhaser(): Phaser.Group {
             return this;
         }
 
