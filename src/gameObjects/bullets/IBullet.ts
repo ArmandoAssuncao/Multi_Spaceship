@@ -5,6 +5,7 @@ module $MultiSpaceship$.Client {
         damage: number;
         speed: number;
         fireRate: number;
+        styleBullet: Function;
 
         fire(): void;
         getObjectPhaser(): Phaser.Group;

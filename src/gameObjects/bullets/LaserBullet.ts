@@ -7,6 +7,7 @@ module $MultiSpaceship$.Client {
         speed: number;
         fireRate: number;
         bulletTime: number;
+        styleBullet: Function;
 
         constructor(game: Phaser.Game, owner: Phaser.Sprite) {
             super(game, undefined, 'LaserBulletGroup', false, true, Phaser.Physics.ARCADE);
@@ -16,6 +17,8 @@ module $MultiSpaceship$.Client {
             this.speed = 400;
             this.fireRate = 200;
             this.bulletTime = 0;
+
+            this.styleBullet = StylesBullet.forward(owner, this.speed); //default
 
             this.createMultiple(30, 'bullet');
             this.setAll('anchor.x', 0);
@@ -29,8 +32,7 @@ module $MultiSpaceship$.Client {
                 var bullet = this.getFirstExists(false);
 
                 if (bullet) {
-                    bullet.reset(this.owner.x, this.owner.y + 8);
-                    bullet.body.velocity.x = this.speed;
+                    this.styleBullet(bullet);
                     this.bulletTime = this.game.time.now + this.fireRate;
                 }
             }
