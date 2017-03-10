@@ -1,6 +1,6 @@
 module $MultiSpaceship$.Client {
 
-    export class LaserWeapon extends Phaser.Weapon implements IWeapon {
+    export class BallWeapon extends Phaser.Weapon implements IWeapon {
 
         owner: Phaser.Sprite;
         name: string;
@@ -10,7 +10,7 @@ module $MultiSpaceship$.Client {
         constructor(game: Phaser.Game, owner: Phaser.Sprite) {
             super(game, new Phaser.PluginManager(game));
             this.owner = owner;
-            this.name = 'LaserWeapon';
+            this.name = 'BallWeapon';
             this.damage = 50;
             this.bulletSpeed = 200;
             this.fireRate = 100;
@@ -20,7 +20,7 @@ module $MultiSpaceship$.Client {
 
             this._styleWeapon = StylesBullet.forward(owner, this.bulletSpeed); //default style
 
-            this.createBullets(30, 'bullet');
+            this.createBullets(30, 'enemyBullet');
             this.trackSprite(owner, 0, 0, true);
         }
 

@@ -4,8 +4,9 @@ module $MultiSpaceship$.Client {
         owner: Phaser.Sprite;
         name: string;
         damage: number;
-        styleBullet: Function;
+        styleWeapon: Function;
 
+        fireWeapon(): void;
         getObjectPhaser(): Phaser.Weapon;
     }
 }

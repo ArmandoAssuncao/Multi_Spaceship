@@ -2,7 +2,7 @@ module $MultiSpaceship$.Client {
 
     export class Spaceship extends Phaser.Sprite implements IShip {
 
-        private _bullets: IBullet;
+        private _weapon: IWeapon;
         speed: number;
 
         inputKeys: InputKeys;
@@ -20,12 +20,12 @@ module $MultiSpaceship$.Client {
             this.game.add.existing(this);
         }
 
-        get bullets(): IBullet {
-            return this._bullets;
+        get weapon(): IWeapon {
+            return this._weapon;
         }
 
-        set bullets(bullets: IBullet){
-            this._bullets = bullets;
+        set weapon(weapon: IWeapon){
+            this._weapon = weapon;
         }
 
         getObjectPhaser(): Phaser.Sprite {
@@ -67,7 +67,7 @@ module $MultiSpaceship$.Client {
             this.body.velocity.x = this.speed;
         }
         private fire = () => {
-            this._bullets.fire();
+            this._weapon.fireWeapon();
         }
     }
 }

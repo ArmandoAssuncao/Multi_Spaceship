@@ -20,15 +20,14 @@
 
 
             this.mySpaceship = new Spaceship(this.game, this.world.centerX, this.world.centerY);
-            this.mySpaceship.bullets = new LaserBullet(this.game, this.mySpaceship);
+            this.mySpaceship.weapon = new LaserWeapon(this.game, this.mySpaceship);
+            this.mySpaceship.weapon.styleWeapon = StylesBullet.forward(this.mySpaceship, this.mySpaceship.weapon.getObjectPhaser().bulletSpeed);
 
             this.groupSpaceship02 = this.game.add.group();
-
             for (var i = 0; i < 10; i++) {
                 let invader = new Spaceship02(this.game, this.world.randomX, this.world.randomY);
-                let ballBullet = new BallBullet(this.game, invader);
-                ballBullet.styleBullet = StylesBullet.toObject(this.game, invader, this.mySpaceship, ballBullet.speed);
-                invader.bullets = ballBullet;
+                invader.weapon = new BallWeapon(this.game, this.mySpaceship);
+                invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
 
                 this.groupSpaceship02.add(invader);
             }
@@ -48,11 +47,14 @@
 
         update(){
             this.game.physics.arcade.overlap(this.mySpaceship, this.groupSpaceship02, this.collisionOfSpaceships, null, this);
-            this.game.physics.arcade.overlap(this.groupSpaceship02, this.mySpaceship.bullets, this.collisionOfSpaceshipAndBullet, null, this);
+            this.game.physics.arcade.overlap(this.groupSpaceship02, this.mySpaceship.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
 
             this.groupSpaceship02.forEach((child: IShip)=>{
-                this.game.physics.arcade.overlap(this.mySpaceship, child.bullets, this.collisionOfSpaceshipAndBullet, null, this);
+                this.game.physics.arcade.overlap(this.mySpaceship, child.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
             }, this);
+        }
+
+        render(){
         }
 
     }
