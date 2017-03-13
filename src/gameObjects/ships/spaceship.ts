@@ -34,7 +34,7 @@ module $MultiSpaceship$.Client {
 
 
         create(){
-            this.anchor.setTo(0.5, 0.5);
+            this.anchor.setTo(1, 0.5);
 
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
 

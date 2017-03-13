@@ -12,13 +12,13 @@ module $MultiSpaceship$.Client {
             this.owner = owner;
             this.name = 'BallWeapon';
             this.damage = 50;
-            this.bulletSpeed = 200;
-            this.fireRate = 100;
-            this.bulletKillDistance = 400;
+            this.bulletSpeed = 800;
+            this.fireRate = 50;
+            this.bulletKillDistance = 1000;
             this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
             //this.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 
-            this._styleWeapon = StylesBullet.forward(owner, this.bulletSpeed); //default style
+            this.styleWeapon = StylesBullet.forward(owner, this.bulletSpeed); //default style
 
             this.createBullets(30, 'enemyBullet');
             this.trackSprite(owner, 0, 0, true);

@@ -55,6 +55,10 @@
         }
 
         render(){
+            //this.game.debug.spriteBounds(this.mySpaceship);
+            this.game.debug.spriteCoords(this.mySpaceship, 20, 32);
+            this.mySpaceship.weapon.getObjectPhaser().debug(400, 32);
+            //game.debug.spriteCorners(sprite, true, true);
         }
 
     }
