@@ -10,18 +10,20 @@
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.world.setBounds(0, 0, 2000, this.game.height);
 
-            this.background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'starfield');
+            this.background = this.game.add.tileSprite(0, 0, this.world.bounds.width, this.world.bounds.height, 'starfield');
 
             var imageBg = this.game.cache.getImage(this.background.key.toString());
             this.background.tileScale.x = this.world.width / imageBg.width;
             this.background.tileScale.y = this.world.height / imageBg.height;
             this.background.autoScroll(-80, 0);
 
-
             this.mySpaceship = new Spaceship(this.game, this.world.centerX, this.world.centerY);
             this.mySpaceship.weapon = new LaserWeapon(this.game, this.mySpaceship);
             this.mySpaceship.weapon.styleWeapon = StylesBullet.forward(this.mySpaceship, this.mySpaceship.weapon.getObjectPhaser().bulletSpeed);
+
+            this.game.camera.follow(this.mySpaceship);
 
             this.groupSpaceship02 = this.game.add.group();
             for (var i = 0; i < 10; i++) {
@@ -56,8 +58,8 @@
 
         render(){
             //this.game.debug.spriteBounds(this.mySpaceship);
-            this.game.debug.spriteCoords(this.mySpaceship, 20, 32);
-            this.mySpaceship.weapon.getObjectPhaser().debug(400, 32);
+            // this.game.debug.spriteCoords(this.mySpaceship, 20, 32);
+            // this.mySpaceship.weapon.getObjectPhaser().debug(400, 32);
             //game.debug.spriteCorners(sprite, true, true);
         }
 
