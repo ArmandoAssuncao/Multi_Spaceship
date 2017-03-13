@@ -52,6 +52,7 @@ module $MultiSpaceship$.Client {
             this.inputKeys.keyDown = this.moveToDown;
             this.inputKeys.keyLeft = this.moveToLeft;
             this.inputKeys.keyRight = this.moveToRight;
+            this.inputKeys.keyD = this.rotate;
             this.inputKeys.keyS = this.fire;
         }
         private moveToUp = () => {
@@ -65,6 +66,13 @@ module $MultiSpaceship$.Client {
         }
         private moveToRight = () => {
             this.body.velocity.x = this.speed;
+        }
+        private rotate = () => {
+            this.inputKeys.disableKeyD();
+            this.angle += 180;
+            setTimeout(() => {
+                this.inputKeys.enableKeyD();
+            }, 200);
         }
         private fire = () => {
             this._weapon.fireWeapon();
