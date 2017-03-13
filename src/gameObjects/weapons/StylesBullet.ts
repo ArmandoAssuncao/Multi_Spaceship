@@ -11,7 +11,7 @@ module $MultiSpaceship$.Client {
         static forward(sender: Phaser.Sprite, speed: number){
             return function(bullet: Phaser.Sprite){
                 bullet.reset(sender.x, sender.y);
-                bullet.body.velocity.x = speed;
+                this.game.physics.arcade.velocityFromAngle(sender.angle, speed, bullet.body.velocity);
             }
         }
     }
