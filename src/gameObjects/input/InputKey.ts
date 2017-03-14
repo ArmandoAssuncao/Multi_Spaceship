@@ -17,22 +17,22 @@ module $MultiSpaceship$.Client {
             this._rotate = game.input.keyboard.addKey(Phaser.Keyboard.D);
         }
 
-        set moveUp(callback: Function){
+        set moveUpHold(callback: Function){
             this._moveUp.onHoldCallback = callback;
         }
-        set moveDown(callback: Function){
+        set moveDownHold(callback: Function){
             this._moveDown.onHoldCallback = callback;
         }
-        set moveLeft(callback: Function){
+        set moveLeftHold(callback: Function){
             this._moveLeft.onHoldCallback = callback;
         }
-        set moveRight(callback: Function){
+        set moveRightHold(callback: Function){
             this._moveRight.onHoldCallback = callback;
         }
-        set fire(callback: Function){
+        set fireHold(callback: Function){
             this._fire.onHoldCallback = callback;
         }
-        set rotate(callback: Function){
+        set rotateHold(callback: Function){
             this._rotate.onHoldCallback = callback;
         }
 

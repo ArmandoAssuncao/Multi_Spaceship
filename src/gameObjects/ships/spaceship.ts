@@ -46,12 +46,12 @@ module $MultiSpaceship$.Client {
         }
 
         private defineKeys(){
-            this.inputKeys.moveUp = this.moveToUp;
-            this.inputKeys.moveDown = this.moveToDown;
-            this.inputKeys.moveLeft = this.moveToLeft;
-            this.inputKeys.moveRight = this.moveToRight;
-            this.inputKeys.fire = this.fire;
-            this.inputKeys.rotate = this.rotate;
+            this.inputKeys.moveUpHold = this.moveToUp;
+            this.inputKeys.moveDownHold = this.moveToDown;
+            this.inputKeys.moveLeftHold = this.moveToLeft;
+            this.inputKeys.moveRightHold = this.moveToRight;
+            this.inputKeys.fireHold = this.fire;
+            this.inputKeys.rotateHold = this.rotate;
 
             this.inputKeys.moveUpReleased = this.moveToUpReleased;
             this.inputKeys.moveDownReleased = this.moveToDownReleased;
