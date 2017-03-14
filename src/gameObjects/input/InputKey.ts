@@ -8,15 +8,7 @@ module $MultiSpaceship$.Client {
         private _fire: Phaser.Key;
         private _rotate: Phaser.Key;
 
-        private _moveUpCB: Function = null;
-        private _moveDownCB: Function = null;
-        private _moveLeftCB: Function = null;
-        private _moveRightCB: Function = null;
-        private _fireCB: Function = null;
-        private _rotateCB: Function = null;
-
         constructor (game: Phaser.Game) {
-            // Create a key for each arrows key
             this._moveUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
             this._moveDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
             this._moveLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
@@ -26,53 +18,73 @@ module $MultiSpaceship$.Client {
         }
 
         set moveUp(callback: Function){
-            if(callback !== null) this._moveUpCB = callback;
             this._moveUp.onHoldCallback = callback;
         }
         set moveDown(callback: Function){
-            if(callback !== null) this._moveDownCB = callback;
             this._moveDown.onHoldCallback = callback;
         }
         set moveLeft(callback: Function){
-            if(callback !== null) this._moveLeftCB = callback;
             this._moveLeft.onHoldCallback = callback;
         }
         set moveRight(callback: Function){
-            if(callback !== null) this._moveRightCB = callback;
             this._moveRight.onHoldCallback = callback;
         }
         set fire(callback: Function){
-            if(callback !== null) this._fireCB = callback;
             this._fire.onHoldCallback = callback;
         }
         set rotate(callback: Function){
-            if(callback !== null) this._rotateCB = callback;
             this._rotate.onHoldCallback = callback;
         }
 
+
+        set moveUpReleased(callback: Function){
+            this._moveUp.onUp.removeAll();
+            if(typeof callback === 'function') this._moveUp.onUp.add(callback);
+        }
+        set moveDownReleased(callback: Function){
+            this._moveDown.onUp.removeAll();
+            if(typeof callback === 'function') this._moveDown.onUp.add(callback);
+        }
+        set moveLeftReleased(callback: Function){
+            this._moveLeft.onUp.removeAll();
+            if(typeof callback === 'function') this._moveLeft.onUp.add(callback);
+        }
+        set moveRightReleased(callback: Function){
+            this._moveRight.onUp.removeAll();
+            if(typeof callback === 'function') this._moveRight.onUp.add(callback);
+        }
+        set fireReleased(callback: Function){
+            this._fire.onUp.removeAll();
+            if(typeof callback === 'function') this._fire.onUp.add(callback);
+        }
+        set rotateReleased(callback: Function){
+            this._rotate.onUp.removeAll();
+            if(typeof callback === 'function') this._rotate.onUp.add(callback);
+        }
+
         enableKeys(){
-            this.moveUp = this._moveUpCB;
-            this.moveDown = this._moveDownCB;
-            this.moveLeft = this._moveLeftCB;
-            this.moveRight = this._moveRightCB;
-            this.fire = this._fireCB;
-            this.rotate = this._rotateCB;
+            this._moveUp.enabled = true;
+            this._moveDown.enabled = true;
+            this._moveLeft.enabled = true;
+            this._moveRight.enabled = true;
+            this._fire.enabled = true;
+            this._rotate.enabled = true;
         }
 
         disableKeys(){
-            this.moveUp = null;
-            this.moveDown = null;
-            this.moveLeft = null;
-            this.moveRight = null;
-            this.fire = null;
-            this.rotate = null;
+            this._moveUp.enabled = false;
+            this._moveDown.enabled = false;
+            this._moveLeft.enabled = false;
+            this._moveRight.enabled = false;
+            this._fire.enabled = false;
+            this._rotate.enabled = false;
         }
 
-        enableKeyD(){
-            this.rotate = this._rotateCB;
+        enableRotate(){
+            this._rotate.enabled = true;
         }
-        disableKeyD(){
-            this.rotate = null;
+        disableRotate(){
+            this._rotate.enabled = false;
         }
 
     }

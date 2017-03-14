@@ -42,9 +42,7 @@ module $MultiSpaceship$.Client {
         }
 
         update(){
-            if (this.alive) {
-                this.body.velocity.setTo(0, 0);
-            }
+
         }
 
         private defineKeys(){
@@ -54,6 +52,13 @@ module $MultiSpaceship$.Client {
             this.inputKeys.moveRight = this.moveToRight;
             this.inputKeys.fire = this.fire;
             this.inputKeys.rotate = this.rotate;
+
+            this.inputKeys.moveUpReleased = this.moveToUpReleased;
+            this.inputKeys.moveDownReleased = this.moveToDownReleased;
+            this.inputKeys.moveLeftReleased = this.moveToLeftReleased;
+            this.inputKeys.moveRightReleased = this.moveToRightReleased;
+            //this.inputKeys.fireReleased = this.fireReleased;
+            //this.inputKeys.rotateReleased = this.rotateReleased;
         }
         private moveToUp = () => {
             this.body.velocity.y = -this.speed;
@@ -71,11 +76,28 @@ module $MultiSpaceship$.Client {
             this._weapon.fireWeapon();
         }
         private rotate = () => {
-            this.inputKeys.disableKeyD();
+            this.inputKeys.disableRotate();
             this.angle += 180;
             setTimeout(() => {
-                this.inputKeys.enableKeyD();
+                this.inputKeys.enableRotate();
             }, 200);
+        }
+
+        private moveToUpReleased = () => {
+            this.body.velocity.y = 0;
+        }
+        private moveToDownReleased = () => {
+            this.body.velocity.y = 0;
+        }
+        private moveToLeftReleased = () => {
+            this.body.velocity.x = 0;
+        }
+        private moveToRightReleased = () => {
+            this.body.velocity.x = 0;
+        }
+        private fireReleased = () => {
+        }
+        private rotateReleased = () => {
         }
     }
 }
