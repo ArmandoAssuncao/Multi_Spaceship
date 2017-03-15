@@ -1,11 +1,10 @@
 module $MultiSpaceship$.Client {
 
-    export abstract class MobileObject extends Phaser.Sprite {
+    export abstract class MobileObject extends Phaser.Sprite implements IMobileOBject {
 
         velocityX: number;
         velocityY: number;
-        readonly inputKeys: InputKeys;
-
+        private _inputKeys: InputKeys;
         private _weapon: IWeapon;
 
         constructor (game: Phaser.Game, name: string, image: string, x: number, y: number) {
@@ -24,6 +23,10 @@ module $MultiSpaceship$.Client {
             return this;
         }
 
+        get inputKeys():InputKeys {
+            return this._inputKeys;
+        }
+
         get weapon(): IWeapon {
             return this._weapon;
         }
@@ -33,19 +36,22 @@ module $MultiSpaceship$.Client {
         }
 
         activeInputKeys(){
-            this.inputKeys.moveUpHold = this.moveToUp;
-            this.inputKeys.moveDownHold = this.moveToDown;
-            this.inputKeys.moveLeftHold = this.moveToLeft;
-            this.inputKeys.moveRightHold = this.moveToRight;
-            this.inputKeys.rotateHold = this.rotate;
-            this.inputKeys.fireHold = this.fire;
+            if(typeof this._inputKeys === 'undefined' || this._inputKeys === null)
+                this._inputKeys = new InputKeys(this.game);
 
-            this.inputKeys.moveUpReleased = this.moveToUpReleased;
-            this.inputKeys.moveDownReleased = this.moveToDownReleased;
-            this.inputKeys.moveLeftReleased = this.moveToLeftReleased;
-            this.inputKeys.moveRightReleased = this.moveToRightReleased;
-            this.inputKeys.rotateReleased = this.rotateReleased;
-            this.inputKeys.fireReleased = this.fireReleased;
+            this._inputKeys.moveUpHold = this.moveToUp;
+            this._inputKeys.moveDownHold = this.moveToDown;
+            this._inputKeys.moveLeftHold = this.moveToLeft;
+            this._inputKeys.moveRightHold = this.moveToRight;
+            this._inputKeys.rotateHold = this.rotate;
+            this._inputKeys.fireHold = this.fire;
+
+            this._inputKeys.moveUpReleased = this.moveToUpReleased;
+            this._inputKeys.moveDownReleased = this.moveToDownReleased;
+            this._inputKeys.moveLeftReleased = this.moveToLeftReleased;
+            this._inputKeys.moveRightReleased = this.moveToRightReleased;
+            this._inputKeys.rotateReleased = this.rotateReleased;
+            this._inputKeys.fireReleased = this.fireReleased;
         }
         private moveToUp = () => {
             this.body.velocity.y = -this.velocityY;
@@ -59,15 +65,15 @@ module $MultiSpaceship$.Client {
         private moveToRight = () => {
             this.body.velocity.x = this.velocityX;
         }
-        private fire = () => {
-            this._weapon.fireWeapon();
-        }
         private rotate = () => {
-            this.inputKeys.disableRotate();
+            this._inputKeys.disableRotate();
             this.angle += 180;
             setTimeout(() => {
-                this.inputKeys.enableRotate();
+                this._inputKeys.enableRotate();
             }, 200);
+        }
+        private fire = () => {
+            this._weapon.fireWeapon();
         }
 
         private moveToUpReleased = () => {
