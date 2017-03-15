@@ -7,7 +7,7 @@ module $MultiSpaceship$.Client {
         velocityY: number;
         alive: boolean;
         inputKeys: InputKeys;
-        weapon: IWeapon; //must be private
+        getweapon: IWeapon;
 
         getObjectPhaser(): Phaser.Sprite;
     }

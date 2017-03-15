@@ -17,7 +17,7 @@ module $MultiSpaceship$.Client {
             //this.bulletKillDistance = 1000;
             //this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
             this.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
-            this.autofire = true;
+            //this.autofire = true;
 
             //hack to method update execute
             this.active = true;
