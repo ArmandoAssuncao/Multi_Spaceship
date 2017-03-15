@@ -44,17 +44,17 @@
             this.game.physics.arcade.overlap(this.mySpaceship, this.groupSpaceship02, this.collisionOfSpaceships, null, this);
             this.game.physics.arcade.overlap(this.groupSpaceship02, this.mySpaceship.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
 
-            this.groupSpaceship02.forEach((child: IShip)=>{
+            this.groupSpaceship02.forEach((child: IMobileObject)=>{
                 this.game.physics.arcade.overlap(this.mySpaceship, child.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
             }, this);
         }
 
-        collisionOfSpaceships(spaceship1: IShip, spaceship2: IShip) {
+        collisionOfSpaceships(spaceship1: IMobileObject, spaceship2: IMobileObject) {
             spaceship1.getObjectPhaser().kill();
             spaceship2.getObjectPhaser().kill();
         }
 
-        collisionOfSpaceshipAndBullet(spaceship: IShip, bullet: Phaser.Sprite) {
+        collisionOfSpaceshipAndBullet(spaceship: IMobileObject, bullet: Phaser.Sprite) {
             spaceship.getObjectPhaser().kill();
             bullet.kill();
         }

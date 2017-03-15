@@ -1,6 +1,6 @@
 module $MultiSpaceship$.Client {
 
-    export interface IMobileOBject {
+    export interface IMobileObject {
         name: string;
         health: number;
         velocityX: number;

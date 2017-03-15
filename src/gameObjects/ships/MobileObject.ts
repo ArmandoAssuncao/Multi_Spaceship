@@ -1,6 +1,6 @@
 module $MultiSpaceship$.Client {
 
-    export abstract class MobileObject extends Phaser.Sprite implements IMobileOBject {
+    export abstract class MobileObject extends Phaser.Sprite implements IMobileObject {
 
         velocityX: number;
         velocityY: number;
