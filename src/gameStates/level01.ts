@@ -35,8 +35,8 @@
             // this.game.debug.spriteCoords(this.mySpaceship, 20, 32);
             // this.mySpaceship.weapon.getObjectPhaser().debug(400, 32);
             //game.debug.spriteCorners(sprite, true, true);
-            this.game.debug.text(this.mySpaceship.cameraOffset.x + ' '+ this.mySpaceship.cameraOffset.y, 500, 20);
-            this.game.debug.text(JSON.stringify(this.game.camera.atLimit), 20, 20);
+            //this.game.debug.text(this.mySpaceship.cameraOffset.x + ' '+ this.mySpaceship.cameraOffset.y, 500, 20);
+            //this.game.debug.text(JSON.stringify(this.game.camera.atLimit), 20, 20);
         }
 
         update(){
@@ -46,8 +46,6 @@
             this.groupSpaceship02.forEach((child: IShip)=>{
                 this.game.physics.arcade.overlap(this.mySpaceship, child.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
             }, this);
-
-            //this.groupSpaceship02.getFirstAlive(false).fire();
         }
 
         collisionOfSpaceships(spaceship1: IShip, spaceship2: IShip) {
@@ -64,9 +62,8 @@
             this.groupSpaceship02 = this.game.add.group();
             for (var i = 0; i < 10; i++) {
                 let invader = new Spaceship02(this.game, this.world.randomX, this.world.randomY);
-                invader.weapon = new LaserWeapon(this.game, invader);
+                invader.weapon = new BallWeapon(this.game, invader);
                 invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
-
                 this.groupSpaceship02.add(invader);
             }
         }

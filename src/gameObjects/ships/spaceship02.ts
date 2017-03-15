@@ -71,10 +71,10 @@ module $MultiSpaceship$.Client {
             this._weapon.fireWeapon();
         }
         private rotate = () => {
-            this.inputKeys.disableKeyD();
+            this.inputKeys.disableRotate();
             this.angle += 180;
             setTimeout(() => {
-                this.inputKeys.enableKeyD();
+                this.inputKeys.enableRotate();
             }, 200);
         }
     }

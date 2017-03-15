@@ -8,15 +8,15 @@ module $MultiSpaceship$.Client {
         private _styleWeapon: Function;
 
         constructor(game: Phaser.Game, owner: Phaser.Sprite) {
-            super(game, new Phaser.PluginManager(game));
+            super(game, game.plugins);
             this.owner = owner;
             this.name = 'LaserWeapon';
             this.damage = 50;
             this.bulletSpeed = 1200;
             this.fireRate = 150;
-            this.bulletKillDistance = 1000;
-            this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
-            //this.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+            //this.bulletKillDistance = 1000;
+            //this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
+            this.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
 
             this.styleWeapon = StylesBullet.forward(owner, this.bulletSpeed); //default style
 

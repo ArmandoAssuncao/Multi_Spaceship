@@ -8,15 +8,22 @@ module $MultiSpaceship$.Client {
         private _styleWeapon: Function;
 
         constructor(game: Phaser.Game, owner: Phaser.Sprite) {
-            super(game, new Phaser.PluginManager(game));
+            super(game, game.plugins);
             this.owner = owner;
             this.name = 'BallWeapon';
             this.damage = 50;
             this.bulletSpeed = 800;
-            this.fireRate = 50;
-            this.bulletKillDistance = 1000;
-            this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
-            //this.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+            this.fireRate = 500;
+            //this.bulletKillDistance = 1000;
+            //this.bulletKillType = Phaser.Weapon.KILL_DISTANCE;
+            this.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
+            this.autofire = true;
+
+            //hack to method update execute
+            this.active = true;
+            this.hasUpdate = true;
+            game.plugins.add(Phaser.Weapon);
+            game.plugins.plugins.push(this);
 
             this.styleWeapon = StylesBullet.forward(owner, this.bulletSpeed); //default style
 
