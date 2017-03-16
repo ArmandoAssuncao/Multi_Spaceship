@@ -6,6 +6,7 @@ module $MultiSpaceship$.Client {
         velocityX: number;
         velocityY: number;
         alive: boolean;
+        moveStyle: Function;
         inputKeys: InputKeys;
         weapon: IWeapon;
 

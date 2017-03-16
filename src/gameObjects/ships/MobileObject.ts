@@ -4,6 +4,7 @@ module $MultiSpaceship$.Client {
 
         velocityX: number;
         velocityY: number;
+        private _moveStyle: Function = ()=>{};
         private _inputKeys: InputKeys;
         private _weapon: IWeapon;
 
@@ -21,6 +22,13 @@ module $MultiSpaceship$.Client {
 
         getObjectPhaser(): Phaser.Sprite {
             return this;
+        }
+
+        get moveStyle(): Function {
+            return this._moveStyle;
+        }
+        set moveStyle(moveStyle: Function){
+            this._moveStyle = moveStyle;
         }
 
         get inputKeys():InputKeys {
@@ -91,6 +99,10 @@ module $MultiSpaceship$.Client {
         private fireReleased = () => {
         }
         private rotateReleased = () => {
+        }
+
+        update(){
+            this._moveStyle(this);
         }
     }
 }
