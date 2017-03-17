@@ -13,7 +13,7 @@
             this.game.load.spritesheet('invader', '../assets/imgs/invader32x32x4.png', 32, 32);
             this.game.load.image('ship', '../assets/imgs/player.png');
             this.game.load.spritesheet('kaboom', '../assets/imgs/explode.png', 128, 128);
-            this.game.load.image('starfield', '../assets/imgs/starfield.png');
+            this.game.load.image('starfield', '../assets/imgs/starfield.jpg');
         }
 
         create() {
