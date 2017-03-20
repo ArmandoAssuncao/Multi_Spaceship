@@ -23,6 +23,7 @@ module $MultiSpaceship$.Client {
                     object.getObjectPhaser().body.velocity.x = Math.cos(angle) * object.velocityX;
                     object.getObjectPhaser().body.velocity.y = Math.sin(angle) * object.velocityY;
                 }
+                object.getObjectPhaser().rotation = game.physics.arcade.angleBetween(object.getObjectPhaser(), objectDest.getObjectPhaser());
             };
         }
     }

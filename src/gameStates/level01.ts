@@ -28,7 +28,7 @@
 
             this.generateEnemy();
 
-            this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
+            this.game.time.advancedTiming = true;
         }
 
         render(){
@@ -38,6 +38,7 @@
             //game.debug.spriteCorners(sprite, true, true);
             //this.game.debug.text(this.mySpaceship.cameraOffset.x + ' '+ this.mySpaceship.cameraOffset.y, 500, 20);
             //this.game.debug.text(JSON.stringify(this.game.camera.atLimit), 20, 20);
+            this.game.debug.text(this.game.time.fps.toString(), 2, 14, "#00ff00");
         }
 
         update(){

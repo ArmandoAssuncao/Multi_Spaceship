@@ -6,8 +6,8 @@ module $MultiSpaceship$.Client {
 
         constructor (game: Phaser.Game, x: number, y: number) {
             super(game, 'spaceship', 'ship', x, y);
-            this.velocityX = 200;
-            this.velocityY = 200;
+            this.velocityX = 400;
+            this.velocityY = 400;
 
             this.anchor.setTo(1, 0.5);
 
