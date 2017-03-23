@@ -4,7 +4,6 @@
 
         background: Phaser.TileSprite;
         music: Phaser.Sound;
-        player: Player;
         mySpaceship: Spaceship;
         groupSpaceship02: Phaser.Group;
         groupSpaceship03: Phaser.Group;
