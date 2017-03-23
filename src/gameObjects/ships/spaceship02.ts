@@ -9,8 +9,6 @@ module $MultiSpaceship$.Client {
             this.velocityX = 300;
             this.velocityY = 300;
 
-            this.anchor.setTo(0.5, 0.5);
-
             this.game.add.existing(this);
         }
     }

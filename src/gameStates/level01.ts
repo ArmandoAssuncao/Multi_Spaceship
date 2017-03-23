@@ -7,10 +7,11 @@
         player: Player;
         mySpaceship: Spaceship;
         groupSpaceship02: Phaser.Group;
+        groupSpaceship03: Phaser.Group;
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE);
-            this.world.setBounds(0, 0, 2000, this.game.height);
+            this.world.setBounds(0, 0, 10000, this.game.height);
 
             //background
             this.background = this.game.add.tileSprite(0, 0, this.world.bounds.width, this.world.bounds.height, 'starfield');
@@ -42,10 +43,13 @@
         }
 
         update(){
-            this.game.physics.arcade.overlap(this.mySpaceship, this.groupSpaceship02, this.collisionOfSpaceships, null, this);
-            this.game.physics.arcade.overlap(this.groupSpaceship02, this.mySpaceship.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
+            this.game.physics.arcade.overlap(this.mySpaceship, [this.groupSpaceship02, this.groupSpaceship03], this.collisionOfSpaceships, null, this);
+            this.game.physics.arcade.overlap([this.groupSpaceship02, this.groupSpaceship03], this.mySpaceship.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
 
             this.groupSpaceship02.forEach((child: IMobileObject)=>{
+                this.game.physics.arcade.overlap(this.mySpaceship, child.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
+            }, this);
+            this.groupSpaceship03.forEach((child: IMobileObject)=>{
                 this.game.physics.arcade.overlap(this.mySpaceship, child.weapon.getObjectPhaser().bullets, this.collisionOfSpaceshipAndBullet, null, this);
             }, this);
         }
@@ -68,6 +72,16 @@
                 invader.moveStyle = MoveStyles.moveNearObject(this.game, this.mySpaceship, 400);
                 invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
                 this.groupSpaceship02.add(invader);
+            }
+
+            this.groupSpaceship03 = this.game.add.group();
+            let pointY = this.world.randomY;
+            for (var i = 0; i < 5; i++) {
+                let invader = new Spaceship02(this.game, this.mySpaceship.x + this.game.width + 90*i, pointY + 70*i);
+                invader.weapon = this.game.plugins.add(BallWeapon, invader);
+                invader.moveStyle = MoveStyles.moveHorizontallyAround(this.game, this.mySpaceship, 1500, 'left');
+                invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
+                this.groupSpaceship03.add(invader);
             }
         }
     }
