@@ -66,10 +66,10 @@
 
         generateEnemy(){
             this.groupSpaceship02 = this.game.add.group();
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 5; i++) {
                 let invader = new Spaceship02(this.game, this.world.randomX, this.world.randomY);
-                invader.weapon = this.game.plugins.add(BallWeapon, invader);
                 invader.moveStyle = MoveStyles.moveNearObject(this.game, this.mySpaceship, 400);
+                invader.weapon = this.game.plugins.add(BallWeapon, invader);
                 invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
                 this.groupSpaceship02.add(invader);
             }
@@ -78,8 +78,8 @@
             let pointY = this.world.randomY;
             for (var i = 0; i < 5; i++) {
                 let invader = new Spaceship02(this.game, this.mySpaceship.x + this.game.width + 90*i, pointY + 70*i);
-                invader.weapon = this.game.plugins.add(BallWeapon, invader);
                 invader.moveStyle = MoveStyles.moveHorizontallyAround(this.game, this.mySpaceship, 1500, 'left');
+                invader.weapon = this.game.plugins.add(BallWeapon, invader);
                 invader.weapon.styleWeapon = StylesBullet.toObject(this.game, invader, this.mySpaceship, invader.weapon.getObjectPhaser().bulletSpeed);
                 this.groupSpaceship03.add(invader);
             }

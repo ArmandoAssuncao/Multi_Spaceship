@@ -8,8 +8,8 @@ module $MultiSpaceship$.Client {
         private _inputKeys: InputKeys;
         private _weapon: IWeapon;
 
-        constructor (game: Phaser.Game, name: string, image: string, x: number, y: number) {
-            super(game, x, y, image, 1);
+        constructor (game: Phaser.Game, name: string, imageKey: string, x: number, y: number) {
+            super(game, x, y, imageKey, 1);
             this.name = name;
 
             this.anchor.setTo(0.5, 0.5);
@@ -18,6 +18,19 @@ module $MultiSpaceship$.Client {
 
             this.velocityX = 200;
             this.velocityY = 200;
+
+            this.events.onKilled.add(() => {
+                if(this._weapon) this._weapon.getObjectPhaser().autofire = false;
+            });
+
+            this.events.onRevived.add(() => {
+                if(this._weapon) this._weapon.getObjectPhaser().autofire = true;
+            });
+
+            this.events.onDestroy.add(() => {
+                if(this._weapon) this._weapon.getObjectPhaser().destroy();
+                if(this._moveStyle) this._moveStyle = null;
+            });
         }
 
         getObjectPhaser(): Phaser.Sprite {
