@@ -1,4 +1,4 @@
-﻿module $MultiSpaceship$.Client {
+﻿module MultiSpaceship {
 
     export class MainMenu extends Phaser.State {
 

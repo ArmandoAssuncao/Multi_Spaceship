@@ -1,4 +1,4 @@
-﻿module $MultiSpaceship$.Client {
+﻿module MultiSpaceship {
 
     export class Level01 extends Phaser.State {
 

@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export abstract class MobileObject extends Phaser.Sprite implements IMobileObject {
 

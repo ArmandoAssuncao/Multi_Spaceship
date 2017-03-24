@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export interface IWeapon {
         owner: Phaser.Sprite;

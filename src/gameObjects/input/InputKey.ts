@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export class InputKeys {
         private _moveUp: Phaser.Key;

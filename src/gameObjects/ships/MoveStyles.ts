@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export class MoveStyles {
         static moveHorizontally(object: IMobileObject, direction: string = 'right') : Function {

@@ -1,4 +1,4 @@
-﻿module $MultiSpaceship$.Client {
+﻿module MultiSpaceship {
 
     export class GameEngine extends Phaser.Game {
 
@@ -16,5 +16,5 @@
 }
 
 window.onload = () => {
-    new $MultiSpaceship$.Client.GameEngine();
+    new MultiSpaceship.GameEngine();
 };

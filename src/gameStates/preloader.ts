@@ -1,4 +1,4 @@
-﻿module $MultiSpaceship$.Client {
+﻿module MultiSpaceship {
 
     export class Preloader extends Phaser.State {
         loaderText: Phaser.Text;

@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export class StylesBullet {
         static toObject(game:Phaser.Game, sender: Phaser.Sprite, destination: Phaser.Sprite, speed?: number){

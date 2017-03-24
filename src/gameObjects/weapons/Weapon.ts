@@ -1,4 +1,4 @@
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export abstract class Weapon extends Phaser.Weapon  implements IWeapon {
 

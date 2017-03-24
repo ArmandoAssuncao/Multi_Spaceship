@@ -1,6 +1,6 @@
 /// <reference path="MobileObject.ts" />
 
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export class Spaceship02 extends MobileObject {
 

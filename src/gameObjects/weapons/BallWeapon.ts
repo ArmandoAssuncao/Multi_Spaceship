@@ -1,6 +1,6 @@
 /// <reference path="Weapon.ts" />
 
-module $MultiSpaceship$.Client {
+module MultiSpaceship {
 
     export class BallWeapon extends Weapon implements IWeapon {
 
