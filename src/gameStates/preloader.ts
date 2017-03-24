@@ -11,7 +11,9 @@
             this.game.load.image('bullet', '../assets/imgs/bullet.png');
             this.game.load.image('enemyBullet', '../assets/imgs/enemy-bullet.png');
             this.game.load.image('invader', '../assets/imgs/invader.png');
+            this.game.load.image('invader2', '../assets/imgs/invader2.png');
             this.game.load.image('ship', '../assets/imgs/player.png');
+            this.game.load.spritesheet('kaboom', '../assets/imgs/explode.png', 128, 128);
             this.game.load.image('starfield', '../assets/imgs/starfield.jpg');
         }
 
