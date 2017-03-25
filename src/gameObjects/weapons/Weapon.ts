@@ -10,7 +10,7 @@ module MultiSpaceship {
         constructor(game: Phaser.Game){
             super(game, game.plugins);
 
-            this.damage = 50;
+            this.damage = 100;
             this.bulletSpeed = 500;
             this.fireRate = 1200;
             this.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
@@ -21,6 +21,7 @@ module MultiSpaceship {
             this.name = name;
             this.styleWeapon = StylesBullet.forward(this.owner, this.bulletSpeed); //default style
 
+            this.bulletClass = Bullet;
             this.createBullets(30, image);
             this.trackSprite(this.owner, 0, 0, true);
         }
@@ -42,6 +43,16 @@ module MultiSpaceship {
 
         fireWeapon(){
             this.fire();
+        }
+    }
+
+    export class Bullet extends Phaser.Bullet {
+
+        damageBullet: number;
+
+        constructor(game: Phaser.Game, x: number, y: number, key?: any, frame?: any){
+            super(game, x, y, key, frame);
+            this.damageBullet = 100;
         }
     }
 }

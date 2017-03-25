@@ -58,8 +58,8 @@
             spaceship2.getObjectPhaser().kill();
         }
 
-        collisionOfSpaceshipAndBullet(spaceship: IMobileObject, bullet: Phaser.Sprite) {
-            spaceship.getObjectPhaser().kill();
+        collisionOfSpaceshipAndBullet(spaceship: IMobileObject, bullet: Bullet) {
+            spaceship.getObjectPhaser().damage(bullet.damageBullet);
             bullet.kill();
         }
 

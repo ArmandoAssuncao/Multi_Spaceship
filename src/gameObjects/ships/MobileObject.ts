@@ -11,6 +11,7 @@ module MultiSpaceship {
         constructor (game: Phaser.Game, name: string, imageKey: string, x: number, y: number) {
             super(game, x, y, imageKey, 1);
             this.name = name;
+            this.health = 200;
 
             this.anchor.setTo(0.5, 0.5);
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
