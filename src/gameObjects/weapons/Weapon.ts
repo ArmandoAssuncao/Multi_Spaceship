@@ -1,6 +1,6 @@
 module MultiSpaceship {
 
-    export abstract class Weapon extends Phaser.Weapon  implements IWeapon {
+    export abstract class Weapon extends Phaser.Weapon implements IWeapon {
 
         owner: Phaser.Sprite;
         name: string;
@@ -14,6 +14,7 @@ module MultiSpaceship {
             this.bulletSpeed = 500;
             this.fireRate = 1200;
             this.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
+            this.bulletClass = Bullet;
         }
 
         init(owner: Phaser.Sprite, name: string, image: string){
@@ -21,7 +22,6 @@ module MultiSpaceship {
             this.name = name;
             this.styleWeapon = StylesBullet.forward(this.owner, this.bulletSpeed); //default style
 
-            this.bulletClass = Bullet;
             this.createBullets(30, image);
             this.trackSprite(this.owner, 0, 0, true);
         }
