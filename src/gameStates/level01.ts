@@ -22,7 +22,7 @@
             //player
             this.mySpaceship = new Spaceship(this.game, this.world.centerX, this.world.centerY);
             this.mySpaceship.activeInputKeys();
-            this.mySpaceship.weapon = this.game.plugins.add(LaserWeapon, this.mySpaceship);
+            this.mySpaceship.weapon = this.game.plugins.add(PlasmaWeapon, this.mySpaceship);
             this.mySpaceship.weapon.styleWeapon = StylesBullet.forward(this.mySpaceship, this.mySpaceship.weapon.getObjectPhaser().bulletSpeed);
             this.game.camera.follow(this.mySpaceship);
 

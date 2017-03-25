@@ -9,7 +9,7 @@
             this.loaderText.anchor.setTo(0.5);
 
             this.game.load.image('bullet', '../assets/imgs/bullet.png');
-            this.game.load.image('plasmBullet', '../assets/imgs/bullet_plasm.png');
+            this.game.load.image('plasmaBullet', '../assets/imgs/bullet_plasma.png');
             this.game.load.image('enemyBullet', '../assets/imgs/enemy-bullet.png');
             this.game.load.image('invader', '../assets/imgs/invader.png');
             this.game.load.image('invader2', '../assets/imgs/invader2.png');
