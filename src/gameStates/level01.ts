@@ -25,6 +25,7 @@
             this.mySpaceship.weapon = this.game.plugins.add(PlasmaWeapon, this.mySpaceship);
             this.mySpaceship.weapon.styleWeapon = StylesBullet.forward(this.mySpaceship, this.mySpaceship.weapon.getObjectPhaser().bulletSpeed);
             this.game.camera.follow(this.mySpaceship);
+            this.mySpaceship.activeHUD();
 
             this.generateEnemy();
 
@@ -59,7 +60,7 @@
         }
 
         collisionOfSpaceshipAndBullet(spaceship: IMobileObject, bullet: Bullet) {
-            spaceship.getObjectPhaser().damage(bullet.damageBullet);
+            spaceship.damage(bullet.damageBullet);
             bullet.kill();
         }
 

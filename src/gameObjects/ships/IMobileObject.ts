@@ -3,6 +3,7 @@ module MultiSpaceship {
     export interface IMobileObject {
         name: string;
         health: number;
+        damage: Function;
         velocityX: number;
         velocityY: number;
         alive: boolean;

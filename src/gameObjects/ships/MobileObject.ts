@@ -7,18 +7,19 @@ module MultiSpaceship {
         private _moveStyle: Function = ()=>{};
         private _inputKeys: InputKeys;
         private _weapon: IWeapon;
+        private _hud: HUD;
 
         constructor (game: Phaser.Game, name: string, imageKey: string, x: number, y: number) {
             super(game, x, y, imageKey, 1);
             this.name = name;
             this.health = 200;
+            this.maxHealth = 200;
+            this.velocityX = 200;
+            this.velocityY = 200;
 
             this.anchor.setTo(0.5, 0.5);
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
             this.body.collideWorldBounds = true;
-
-            this.velocityX = 200;
-            this.velocityY = 200;
 
             this.events.onKilled.add(() => {
                 if(this._weapon) this._weapon.getObjectPhaser().autofire = false;
@@ -55,6 +56,19 @@ module MultiSpaceship {
 
         set weapon(weapon: IWeapon){
             this._weapon = weapon;
+        }
+
+        activeHUD(x?: number, y?: number){
+            if(!this._hud){
+                this._hud = new HUD(this.game, this, x, y);
+                this._hud.show();
+            }
+        }
+
+        damage(amount: number): Phaser.Sprite {
+            let sprite = super.damage(amount);
+            if(this._hud) this._hud.setHealth(this.health * 100 / this.maxHealth);
+            return sprite;
         }
 
         activeInputKeys(){
